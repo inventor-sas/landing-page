@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08265A">
+  <meta name="description" content="Inventor crea productos y soluciones tecnológicas. Conoce nuestra plataforma estudiantil centrada en la seguridad.">
+  <title>Inventor — Ideas que toman forma</title>
+  <style>
+    :root { --navy:#08265A; --cyan:#0CB1F1; --ink:#122447; --muted:#5c6b83; --pale:#f3f9fd; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:#fff; font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
+    a { color:inherit; text-decoration:none; }
+    a:focus-visible { outline:3px solid var(--cyan); outline-offset:4px; }
+    svg { display:block; }
+    .defs { position:absolute; width:0; height:0; overflow:hidden; }
+    .container { width:min(1160px,calc(100% - 48px)); margin-inline:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.94); border-bottom:1px solid rgba(8,38,90,.08); backdrop-filter:blur(16px); }
+    .header-inner { min-height:92px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:inline-flex; align-items:center; gap:13px; color:var(--navy); font-weight:850; font-size:30px; letter-spacing:-.055em; white-space:nowrap; }
+    .brand svg { width:70px; height:70px; }
+    nav { display:flex; align-items:center; gap:30px; font-size:15px; font-weight:650; color:#42516b; }
+    nav a:hover, .footer-links a:hover { color:#079bd7; }
+    .nav-contact { padding:10px 17px; border:1px solid #cddce9; border-radius:999px; color:var(--navy); }
+    .hero { overflow:hidden; background:radial-gradient(circle at 78% 20%,#e7f8ff 0,transparent 33%),linear-gradient(145deg,#fff 5%,#f5faff 72%,#fff); }
+    .hero-inner { min-height:660px; display:grid; grid-template-columns:1.08fr .92fr; align-items:center; gap:46px; padding-block:75px 100px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:#087daf; font-size:12px; font-weight:850; letter-spacing:.15em; text-transform:uppercase; }
+    .eyebrow:before { content:""; width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 5px #dff6ff; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { margin:23px 0 22px; max-width:690px; color:var(--navy); font-size:clamp(48px,5.5vw,78px); line-height:1.075; letter-spacing:-.062em; }
+    h1 span { color:#079ed9; }
+    .lead { max-width:600px; color:var(--muted); font-size:20px; line-height:1.68; }
+    .actions { display:flex; flex-wrap:wrap; gap:13px; margin-top:32px; }
+    .button { min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:12px 20px; border-radius:11px; font-size:14px; font-weight:760; transition:transform .2s,box-shadow .2s; }
+    .button:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(8,38,90,.13); }
+    .button-primary { color:#fff; background:var(--navy); }
+    .button-secondary { border:1px solid #cbdce9; color:var(--navy); background:#fff; }
+    .hero-art { position:relative; min-height:460px; display:grid; place-items:center; }
+    .orb { position:absolute; width:min(100%,470px); aspect-ratio:1; border:1px solid #d6eaf4; border-radius:50%; }
+    .orb:before,.orb:after { content:""; position:absolute; border:1px solid #e3f1f8; border-radius:50%; inset:38px; }
+    .orb:after { inset:76px; }
+    .tech-panel { z-index:1; width:360px; height:360px; display:grid; place-items:center; border:1px solid #e7eef5; border-radius:35px; background:rgba(255,255,255,.94); box-shadow:0 32px 76px rgba(8,38,90,.11); transform:rotate(-4deg); }
+    .tech-panel svg { width:100%; height:100%; transform:rotate(4deg); }
+    .floating { position:absolute; z-index:2; padding:13px 16px; border:1px solid #e7eef5; border-radius:13px; background:#fff; box-shadow:0 18px 45px rgba(8,38,90,.11); font-size:12px; font-weight:760; color:var(--navy); }
+    .floating.top { top:23px; right:-4px; }
+    .floating.bottom { bottom:25px; left:-4px; display:flex; align-items:center; gap:9px; }
+    .floating .dot { width:12px; height:12px; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 5px #e7f8ff; }
+    .section { padding-block:96px; }
+    .section h2 { margin:14px 0 17px; color:var(--navy); font-size:clamp(32px,3.6vw,48px); line-height:1.16; letter-spacing:-.045em; }
+    .section-head { max-width:680px; margin-bottom:37px; }
+    .section-head p,.about-copy { color:var(--muted); font-size:17px; line-height:1.75; }
+    .about-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:80px; align-items:start; }
+    .about-copy { padding-top:34px; }
+    .values { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:45px; }
+    .value { border-top:2px solid #ccecf9; padding-top:19px; }
+    .value strong { display:block; margin-bottom:7px; color:var(--navy); font-size:15px; }
+    .value p { margin:0; color:var(--muted); font-size:14px; line-height:1.6; }
+    .solutions { background:var(--pale); }
+    .solution-grid { display:grid; grid-template-columns:1.25fr .75fr .75fr; gap:18px; }
+    .card { min-height:305px; display:flex; flex-direction:column; align-items:start; padding:30px; border:1px solid #e2edf4; border-radius:19px; background:#fff; box-shadow:0 7px 30px rgba(8,38,90,.035); }
+    .card.featured { color:#fff; background:linear-gradient(145deg,#08265A,#10417e); border-color:transparent; }
+    .icon { width:48px; height:48px; display:grid; place-items:center; border-radius:13px; color:var(--navy); background:#e8f8ff; font-size:23px; line-height:1; }
+    .featured .icon { color:#fff; background:rgba(255,255,255,.15); }
+    .card h3 { margin:26px 0 10px; color:var(--navy); font-size:21px; line-height:1.2; letter-spacing:-.025em; }
+    .featured h3 { color:#fff; font-size:25px; }
+    .card p { margin-bottom:0; color:var(--muted); font-size:14px; line-height:1.75; }
+    .featured p { color:#dbeafb; }
+    .tag { margin-top:auto; padding-top:25px; color:#91e7ff; font-size:12px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
+    .focus { margin-top:20px; display:flex; flex-wrap:wrap; align-items:center; gap:11px; padding:17px 21px; border:1px solid #dce9f2; border-radius:13px; background:#fff; color:#55647a; font-size:14px; }
+    .focus strong { color:var(--navy); }
+    .focus span { padding:5px 11px; border-radius:999px; background:#edf8fc; color:#12678d; font-size:12px; font-weight:700; }
+    section[id] { scroll-margin-top:130px; }
+    .featured-link { display:inline-flex; align-items:center; gap:7px; margin-top:10px; color:#fff; font-size:14px; font-weight:750; text-decoration:underline; text-underline-offset:4px; }
+    .platform-intro { display:grid; grid-template-columns:1.12fr .88fr; align-items:center; gap:55px; }
+    .platform-intro .intro-copy { max-width:650px; color:var(--muted); font-size:17px; line-height:1.75; }
+    .platform-journey { padding:30px; border-radius:24px; background:linear-gradient(145deg,#08265A,#144782); color:#fff; box-shadow:0 22px 50px rgba(8,38,90,.12); }
+    .journey-top { display:flex; align-items:center; gap:17px; margin-bottom:25px; }
+    .journey-id { width:66px; height:66px; flex:none; display:grid; place-items:center; border:1px solid rgba(255,255,255,.35); border-radius:18px; background:rgba(255,255,255,.12); color:#fff; font-size:30px; font-weight:850; }
+    .journey-top strong { display:block; font-size:20px; line-height:1.2; }
+    .journey-top small { color:#b9d8f0; font-size:13px; }
+    .journey-track { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+    .journey-track span { padding:13px 8px; border:1px solid rgba(255,255,255,.2); border-radius:10px; background:rgba(255,255,255,.08); text-align:center; font-size:12px; font-weight:700; }
+    .platform-subhead { margin:65px 0 24px; color:var(--navy); font-size:26px; letter-spacing:-.035em; }
+    .feature-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .feature-card { padding:24px; border:1px solid #e1eaf2; border-radius:17px; background:#fff; box-shadow:0 7px 24px rgba(8,38,90,.035); }
+    .feature-number { width:36px; height:36px; display:grid; place-items:center; margin-bottom:22px; border-radius:10px; background:#e7f8ff; color:#087dad; font-size:13px; font-weight:850; }
+    .feature-card h4 { margin:0 0 10px; color:var(--navy); font-size:17px; line-height:1.3; }
+    .feature-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.65; }
+    .audience { margin-top:62px; padding:36px; border-radius:22px; background:#f3f9fd; }
+    .audience h3 { margin:0 0 22px; color:var(--navy); font-size:27px; letter-spacing:-.035em; }
+    .audience-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .audience-card { padding:21px; border-radius:13px; background:#fff; }
+    .audience-card strong { display:block; margin-bottom:8px; color:var(--navy); }
+    .audience-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.65; }
+    .platform-closing { margin:30px 0 0; color:var(--navy); text-align:center; font-size:18px; font-weight:800; }
+    .contact-wrap { display:grid; grid-template-columns:1fr 1fr; gap:55px; align-items:center; padding:58px 65px; border-radius:26px; background:linear-gradient(130deg,#08265A,#123c76); color:#fff; }
+    .contact-wrap h2 { color:#fff; }
+    .contact-wrap p { max-width:480px; margin:0; color:#d5e5f5; font-size:16px; line-height:1.75; }
+    .contact-details { display:grid; gap:12px; }
+    .contact-item { padding:17px 20px; border:1px solid rgba(255,255,255,.18); border-radius:12px; background:rgba(255,255,255,.07); }
+    .contact-item small { display:block; margin-bottom:3px; color:#99dff5; font-size:12px; font-weight:750; text-transform:uppercase; letter-spacing:.09em; }
+    .contact-item span { font-size:16px; font-weight:650; }
+    .contact-note { color:#a9c9e4; font-size:12px; }
+    footer { padding-block:26px; color:#69768a; font-size:13px; }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .footer-links { display:flex; gap:20px; }
+    @media(max-width:900px) {
+      .hero-inner { gap:20px; min-height:auto; }
+      .hero-art { transform:scale(.83); margin-inline:-45px; }
+      .about-grid { gap:30px; }
+      .solution-grid { grid-template-columns:1fr 1fr; }
+      .featured { grid-column:1/-1; }
+      .platform-intro { grid-template-columns:1fr; }
+      .feature-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:680px) {
+      .container { width:min(100% - 36px,1160px); }
+      .header-inner { min-height:70px; flex-wrap:wrap; justify-content:center; padding-block:12px; }
+      .brand { font-size:40px; }
+      .brand svg { width:80px; height:80px; }
+      nav { justify-content:center; flex-wrap:wrap; gap:13px 19px; font-size:12px; }
+      .nav-contact { padding:6px 10px; }
+      .hero-inner { display:flex; flex-direction:column; align-items:stretch; padding-block:60px 35px; gap:15px; }
+      h1 { font-size:clamp(41px,11vw,60px); }
+      .lead { font-size:16px; }
+      .hero-art { min-height:370px; transform:scale(.75); margin:-25px -40px; }
+      .section { padding-block:68px; }
+      .about-grid,.contact-wrap { grid-template-columns:1fr; gap:15px; }
+      .about-copy { padding-top:0; }
+      .values { grid-template-columns:1fr; gap:24px; }
+      .solution-grid { grid-template-columns:1fr; }
+      .featured { grid-column:auto; }
+      .card { min-height:245px; }
+      .contact-wrap { padding:34px 25px; }
+      .contact-details { margin-top:15px; }
+      .footer-inner { flex-direction:column; align-items:start; }
+      section[id] { scroll-margin-top:155px; }
+      .platform-journey { padding:23px; }
+      .feature-grid,.audience-grid { grid-template-columns:1fr; }
+      .platform-subhead { margin-top:45px; }
+      .audience { padding:23px; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .button { transition:none; } }
+  </style>
+</head>
+<body>
+  <!-- Símbolo y colores tomados del kit corporativo adjunto. -->
+  <svg class="defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="inventor-mark" viewBox="29 3 380 380">
+      <circle cx="107.7" cy="80.5" r="37.1" fill="#08265A"/>
+      <circle cx="331.7" cy="80.5" r="37.1" fill="#0CB1F1"/>
+      <path fill="#08265A" d="M 210.5 131.5 L 178.5 110.6 C 171.2 105.8 163.9 106.3 156.6 111.2 L 69.1 172.6 C 59.8 179.0 55.0 187.6 55.0 199.6 L 55.0 260.3 C 55.0 272.2 59.9 280.8 69.4 287.4 L 146.7 339.2 C 155.5 345.4 164.1 345.4 173.2 339.0 L 268.8 273.4 C 279.0 266.4 285.0 257.4 285.0 244.9 L 285.0 233.3 C 285.0 219.4 276.7 211.3 267.0 214.9 C 263.8 216.0 260.6 218.0 256.8 220.7 L 170.7 280.8 C 163.6 285.7 159.8 285.8 153.5 281.5 L 111.1 252.6 C 105.5 248.8 103.7 244.8 103.7 238.6 L 103.7 211.1 C 103.7 205.8 105.9 202.1 110.6 198.9 Z"/>
+      <path fill="#0CB1F1" d="M 160.9 185.0 L 258.1 113.3 C 266.7 106.8 275.4 106.9 283.8 112.7 L 369.1 172.0 C 378.5 178.6 383.0 187.0 383.0 199.4 L 383.0 255.5 C 383.0 269.1 378.3 278.2 367.4 285.7 L 282.8 340.7 C 274.0 346.5 265.4 346.3 256.8 340.7 L 226.3 320.0 L 325.9 252.3 C 331.4 248.5 333.0 244.6 333.0 238.1 L 333.0 211.9 C 333.0 207.0 330.6 203.7 326.7 201.1 L 279.3 168.3 C 273.6 164.3 269.8 164.5 264.1 168.6 L 183.5 231.2 C 173.4 239.1 162.2 236.4 156.5 227.2 C 150.8 217.9 150.5 197.4 160.9 185.0 Z"/>
+    </symbol>
+  </svg>
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Inventor, ir al inicio">
+        <svg aria-hidden="true"><use href="#inventor-mark"/></svg><span>inventor</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Quiénes somos</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#plataforma">Plataforma</a>
+        <a class="nav-contact" href="#contacto">Contacto ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow">Tecnología con propósito</span>
+          <h1>Ideas diferentes.<br><span>Soluciones que hacen la diferencia.</span></h1>
+          <p class="lead">En Inventor unimos experiencia, curiosidad e ingeniería para transformar oportunidades en productos digitales útiles. Hoy construimos una plataforma estudiantil que pone la seguridad de los estudiantes en el centro.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#soluciones">Conoce nuestras soluciones <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#nosotros">Nuestra historia</a>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Ilustración de un microchip conectado por circuitos digitales">
+          <div class="orb"></div>
+          <div class="tech-panel">
+            <svg viewBox="0 0 360 360" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="chip-gradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="#0B3B78"/>
+                  <stop offset="1" stop-color="#08265A"/>
+                </linearGradient>
+              </defs>
+              <g fill="none" stroke="#9edcf2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M130 145H93V91H60M130 181H55M130 217H92V268H56M230 145H268V89H302M230 181H307M230 217H267V270H304M162 130V60M198 130V91H245M162 230V301M198 230V275H242"/>
+              </g>
+              <g fill="#0CB1F1">
+                <circle cx="60" cy="91" r="7"/><circle cx="55" cy="181" r="7"/><circle cx="56" cy="268" r="7"/>
+                <circle cx="302" cy="89" r="7"/><circle cx="307" cy="181" r="7"/><circle cx="304" cy="270" r="7"/>
+                <circle cx="162" cy="60" r="7"/><circle cx="245" cy="91" r="7"/><circle cx="162" cy="301" r="7"/><circle cx="242" cy="275" r="7"/>
+              </g>
+              <rect x="116" y="116" width="128" height="128" rx="25" fill="#d7f5ff"/>
+              <rect x="129" y="129" width="102" height="102" rx="19" fill="url(#chip-gradient)"/>
+              <path d="m164 163-17 17 17 17m32-34 17 17-17 17m-7-41-17 48" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <g fill="#fff" stroke="#0CB1F1" stroke-width="3">
+                <circle cx="60" cy="91" r="3"/><circle cx="304" cy="270" r="3"/><circle cx="162" cy="301" r="3"/>
+              </g>
+            </svg>
+          </div>
+          <div class="floating top">Ideas + ingeniería</div>
+          <div class="floating bottom"><span class="dot"></span>Tecnología con propósito</div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="nosotros">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <span class="eyebrow">Quiénes somos</span>
+            <h2>Dos ingenieros. Muchas formas de ver el futuro.</h2>
+          </div>
+          <div class="about-copy">Somos dos ingenieros de sistemas fundadores con experiencias y conocimientos en distintas áreas. Vemos oportunidades donde otros ven procesos cotidianos y combinamos lo aprendido para crear soluciones tecnológicas originales, prácticas y con impacto real.</div>
+        </div>
+        <div class="values">
+          <div class="value"><strong>Observamos</strong><p>Entendemos los retos y detectamos oportunidades que vale la pena resolver.</p></div>
+          <div class="value"><strong>Conectamos ideas</strong><p>Reunimos perspectivas y conocimientos para diseñar mejores caminos.</p></div>
+          <div class="value"><strong>Construimos</strong><p>Convertimos las ideas en experiencias digitales claras y útiles.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="section solutions" id="soluciones">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Soluciones</span>
+          <h2>Tecnología que responde a necesidades reales.</h2>
+          <p>Diseñamos productos propios y soluciones digitales que simplifican procesos y abren nuevas posibilidades.</p>
+        </div>
+        <div class="solution-grid">
+          <article class="card featured">
+            <div class="icon" aria-hidden="true">✦</div>
+            <h3>Plataforma estudiantil</h3>
+            <p>Estamos desarrollando una plataforma integral para conectar instituciones, familias y estudiantes. Su eje principal es apoyar la seguridad de los estudiantes y facilitar la gestión de la vida escolar.</p>
+            <span class="tag">Producto en desarrollo</span>
+            <a class="featured-link" href="#plataforma">Conoce la plataforma <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">◈</div>
+            <h3>Productos digitales</h3>
+            <p>Exploramos ideas y diseñamos herramientas que convierten necesidades concretas en experiencias sencillas.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">↗</div>
+            <h3>Soluciones a medida</h3>
+            <p>Aplicamos ingeniería y una mirada creativa para resolver retos particulares de cada organización.</p>
+          </article>
+        </div>
+        <div class="focus">
+          <strong>En nuestra visión escolar:</strong>
+          <span>Seguridad estudiantil</span>
+          <span>Conexión con las familias</span>
+          <span>Procesos más simples</span>
+        </div>
+      </div>
+    </section>
+    <section class="section platform" id="plataforma">
+      <div class="container">
+        <div class="platform-intro">
+          <div>
+            <span class="eyebrow">Nuestra plataforma estudiantil</span>
+            <h2>Una sola identificación, un colegio más seguro y conectado.</h2>
+            <p class="intro-copy">Imagina un colegio donde cada estudiante lleva una única identificación durante toda su jornada. Desde que entra por la puerta hasta que regresa a casa, los procesos fluyen de forma segura, ordenada y transparente para la institución y las familias.</p>
+            <p class="intro-copy">Nuestra solución reúne en un solo sistema lo que antes estaba disperso: más tranquilidad para el colegio y más confianza para los padres.</p>
+          </div>
+          <div class="platform-journey" aria-label="Una identificación conecta el acceso, la vida escolar y la ruta">
+            <div class="journey-top"><div class="journey-id" aria-hidden="true">ID</div><div><strong>Una identificación</strong><small>Una experiencia conectada</small></div></div>
+            <div class="journey-track"><span>Ingreso</span><span>Vida escolar</span><span>Ruta</span></div>
+          </div>
+        </div>
+        <h3 class="platform-subhead">Lo que esta solución hace posible</h3>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-number">01</span><h4>Asistencia automática</h4><p>Registra la asistencia de cada estudiante con precisión y mantiene informadas a las familias sobre su presencia en el colegio.</p></article>
+          <article class="feature-card"><span class="feature-number">02</span><h4>Ingresos y salidas</h4><p>Registra cada entrada y salida para que la institución tenga mayor visibilidad de quién se encuentra dentro de sus instalaciones.</p></article>
+          <article class="feature-card"><span class="feature-number">03</span><h4>Compras en máquinas vending</h4><p>Permite usar la misma identificación para comprar sin efectivo, con visibilidad y control de los consumos para los padres.</p></article>
+          <article class="feature-card"><span class="feature-number">04</span><h4>Monitoreo en ruta</h4><p>Ofrece a las familias seguimiento del trayecto escolar de sus hijos, también fuera de las instalaciones del colegio.</p></article>
+          <article class="feature-card"><span class="feature-number">05</span><h4>Conexión con el ERP</h4><p>Integra la información con los sistemas administrativos del colegio para evitar duplicidades y mantener los datos actualizados.</p></article>
+          <article class="feature-card"><span class="feature-number">06</span><h4>Plataforma administrativa</h4><p>Centraliza la operación diaria y facilita la consulta de información para tomar decisiones con datos oportunos.</p></article>
+          <article class="feature-card"><span class="feature-number">07</span><h4>Herramientas para maestros</h4><p>Reduce tareas administrativas para que los docentes puedan dedicar más tiempo y atención a sus estudiantes.</p></article>
+          <article class="feature-card"><span class="feature-number">08</span><h4>Matrículas y cobros</h4><p>Facilita el pago de matrículas y otros conceptos, con trazabilidad para las familias y la institución.</p></article>
+        </div>
+        <div class="audience">
+          <h3>Una experiencia pensada para todos</h3>
+          <div class="audience-grid">
+            <div class="audience-card"><strong>Para el colegio</strong><p>Más seguridad, menos trámites manuales y una visión completa de su operación.</p></div>
+            <div class="audience-card"><strong>Para las familias</strong><p>Información oportuna y mayor tranquilidad durante la jornada de sus hijos.</p></div>
+            <div class="audience-card"><strong>Para los estudiantes</strong><p>Un entorno escolar más ágil, moderno y seguro.</p></div>
+          </div>
+        </div>
+        <p class="platform-closing">Todo con una única identificación. Todo conectado. Todo en un solo lugar.</p>
+      </div>
+    </section>
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="contact-wrap">
+          <div>
+            <span class="eyebrow">Contacto</span>
+            <h2>Conversemos sobre lo que podemos crear.</h2>
+            <p>Si tienes una idea, una necesidad o quieres conocer más sobre Inventor y nuestra plataforma estudiantil, nos encantará escucharla.</p>
+          </div>
+          <div class="contact-details">
+            <div class="contact-item"><small>Correo</small><span>Agrega aquí el correo corporativo</span></div>
+            <div class="contact-item"><small>WhatsApp o teléfono</small><span>Agrega aquí el número de contacto</span></div>
+            <div class="contact-note">Completa estos datos antes de publicar la página.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Inventor. Ideas que toman forma.</span>
+      <div class="footer-links"><a href="#nosotros">Nosotros</a><a href="#soluciones">Soluciones</a><a href="#plataforma">Plataforma</a><a href="#contacto">Contacto</a></div>
+    </div>
+  </footer>
+</body>
+</html>
